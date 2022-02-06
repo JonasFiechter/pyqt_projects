@@ -4,12 +4,13 @@ from PyQt5.QtWidgets import QMessageBox
 
 
 class RunOnDatabase:  # contains methods that works with the database
-    def __init__(self, id_container=None, plate_code=None, driver_name=None, date=None):
+    def __init__(self, data_path=None, id_container=None, plate_code=None, driver_name=None, date=None):
         self.id_container = id_container
         self.plate_code = plate_code
         self.driver_name = driver_name
         self.date = date
-        self.connection = sqlite3.connect(r'D:\12 - MY DOCS\DEV\Dev\Python\simple_cargo_register/database.db')
+        self.path = data_path
+        self.connection = sqlite3.connect(self.path)
         self.cursor = self.connection.cursor()
     
     def check_for_table(self):  # check for table if it exist, if not creates one     
