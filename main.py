@@ -1,4 +1,3 @@
-from re import search
 import sys
 from window import Ui_MainWindow
 from PyQt5 import QtWidgets
@@ -8,10 +7,10 @@ from widget_save import Ui_WidgetSave
 
 
 
-class MainWindowMain(Ui_MainWindow, QMainWindow):  # Classe que herda do arquivo proveniente do QTdesigner
+class MainWindowMain(Ui_MainWindow, QMainWindow):
     def __init__(self):  
         super().__init__()
-        super().setupUi(self)  # importa como self parametros e variaveis da classe Ui_MainWindow
+        super().setupUi(self)  # import with self as parameter from the mother class Ui_MainWindow
         self.btn_submit.clicked.connect(self.send_command_submit)
         self.btn_submit.clicked.connect(self.show_database)
         self.btn_print.clicked.connect(RunOnPrint.send_to_printer)
@@ -33,7 +32,8 @@ class MainWindowMain(Ui_MainWindow, QMainWindow):  # Classe que herda do arquivo
                                 self.input_plate_code.text(), 
                                 self.input_driver_name.text())
         if self.submit_pop_up_btn:
-            submit_instance = RunOnDatabase(id_container=self.input_id_container.text(),
+            submit_instance = RunOnDatabase(data_path=r'c:/anything', # this data must come from the new btn 'select DB' at 'file' menu
+                                            id_container=self.input_id_container.text(),
                                             plate_code=self.input_plate_code.text(),
                                             driver_name=self.input_driver_name.text())
             submit_instance.save_on_database()
@@ -88,7 +88,8 @@ class WidgetSave(Ui_WidgetSave, QWidget):
         self.input_date.setText('DATE')
     
     def search(self):
-        search_instance = RunOnDatabase(id_container=self.input_id_container.text(),
+        search_instance = RunOnDatabase(data_path=r'c:/anything', # this data must come from the new btn 'select DB' at 'file' menu
+                                        id_container=self.input_id_container.text(),
                                         plate_code=self.input_plate_code.text(),
                                         driver_name=self.input_driver_name.text(),
                                         date=self.input_date.text())
