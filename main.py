@@ -32,7 +32,7 @@ class MainWindowMain(Ui_MainWindow, QMainWindow):
                                 self.input_plate_code.text(), 
                                 self.input_driver_name.text())
         if self.submit_pop_up_btn:
-            submit_instance = RunOnDatabase(data_path=r'c:/anything', # this data must come from the new btn 'select DB' at 'file' menu
+            submit_instance = RunOnDatabase(data_path=r'c:/anything', # this data must come from the new btn 'select DB' at 'file' menu.
                                             id_container=self.input_id_container.text(),
                                             plate_code=self.input_plate_code.text(),
                                             driver_name=self.input_driver_name.text())
